@@ -47,6 +47,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.dimensionResource
@@ -190,10 +191,21 @@ private fun InventoryItem(
                     style = MaterialTheme.typography.titleMedium
                 )
             }
+            Row(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+
             Text(
                 text = stringResource(R.string.in_stock, item.quantity),
                 style = MaterialTheme.typography.titleMedium
             )
+                Spacer(Modifier.weight(1f))
+                Text(
+                    text =  item.categoria,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = Color.Red
+                )
+        }
         }
     }
 }
@@ -203,7 +215,7 @@ private fun InventoryItem(
 fun HomeBodyPreview() {
     InventoryTheme {
         HomeBody(listOf(
-            Item(1, "Game", 100.0, 20), Item(2, "Pen", 200.0, 30), Item(3, "TV", 300.0, 50)
+            Item(1, "Game", 100.0, 20,"herramientas"), Item(2, "Pen", 200.0, 30, "blancos"), Item(3, "TV", 300.0, 50,"electronicos")
         ), onItemClick = {})
     }
 }
@@ -221,7 +233,7 @@ fun HomeBodyEmptyListPreview() {
 fun InventoryItemPreview() {
     InventoryTheme {
         InventoryItem(
-            Item(1, "Game", 100.0, 20),
+            Item(1, "Game", 100.0, 20, "herramientas"),
         )
     }
 }

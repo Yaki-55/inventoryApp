@@ -150,6 +150,20 @@ fun ItemInputForm(
             singleLine = true
         )
         OutlinedTextField(
+            value = itemDetails.categoria,
+            onValueChange = { onValueChange(itemDetails.copy(categoria = it)) },
+
+            label = { Text(stringResource(R.string.categoria)) },
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+                unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+                disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            ),
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+        OutlinedTextField(
             value = itemDetails.price,
             onValueChange = { onValueChange(itemDetails.copy(price = it)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
@@ -193,7 +207,7 @@ private fun ItemEntryScreenPreview() {
     InventoryTheme {
         ItemEntryBody(itemUiState = ItemUiState(
             ItemDetails(
-                name = "Item name", price = "10.00", quantity = "5"
+                name = "Item name", categoria = "Item Category" ,price = "10.00", quantity = "5"
             )
         ), onItemValueChange = {}, onSaveClick = {})
     }

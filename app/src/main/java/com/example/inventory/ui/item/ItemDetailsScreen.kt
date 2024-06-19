@@ -204,6 +204,16 @@ fun ItemDetails(
                 )
             )
             ItemDetailsRow(
+                labelResID = R.string.Category,
+                itemDetail = item.categoria,
+                modifier = Modifier.padding(
+                horizontal = dimensionResource(
+                    id = R.dimen
+                        .padding_medium
+                )
+            )
+            )
+            ItemDetailsRow(
                 labelResID = R.string.quantity_in_stock,
                 itemDetail = item.quantity.toString(),
                 modifier = Modifier.padding(
